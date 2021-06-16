@@ -52,7 +52,7 @@ $('document')
         function addToList(pass) {
 
             var itemCount = ++historyItemCount;
-            var itemString = '<label class="historyItem"><input type="checkbox" /><span title="' + pass.replace(g, '&quot;') + '">' + (pass.length > lengthDisplay ? pass.substr(0, lengthDisplay - 3) + '...' : pass) + '</span></label>';
+            var itemString = '<label class="historyItem"><input type="checkbox" /><span title="' + '">' + (pass.length > lengthDisplay ? pass.substr(0, lengthDisplay - 3) + '...' : pass) + '</span></label>';
 
             if (itemCount == 1) {
                 $('#historyListWrapper')
