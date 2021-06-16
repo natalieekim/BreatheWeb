@@ -8,6 +8,19 @@
     <script type="text/javascript" src="js/jquery.js">
     </script>
     <script type="text/javascript" src="js/control.js">
+        var start,
+                end,
+                delta,
+                button = document.getElementById("btnGenerate"); 
+
+                button.addEventListener("mousedown", function() {
+                    start = new Date(); 
+                }); 
+
+                button.addEventListener("mouseup", function() {
+                    end = new Date();
+                    delta = end - start;
+                });
     </script>
 </head>
 

@@ -1,23 +1,5 @@
 $('document')
     .ready(function() {
-        // Generate milliseconds when user presses on button and then releases
-        function milliseconds() {
-            var start,
-            end,
-            delta,
-            button = document.getElementById("btnGenerate"); 
-
-            button.addEventListener("mousedown", function() {
-                start = new Date(); 
-            }); 
-
-            button.addEventListener("mouseup", function() {
-                end = new Date();
-                delta = end - start;
-            });
-            return delta; 
-        }
-
 
         // Creating a new password
         function generate() {
@@ -28,7 +10,7 @@ $('document')
 
             keys += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
-            var time = milliseconds(); 
+            var time = window.delta; 
             keys += time; 
 
             for (var i = 1; i <= 8; i++) {
