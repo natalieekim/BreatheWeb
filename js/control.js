@@ -31,7 +31,7 @@ $('document')
             var time = milliseconds(); 
             keys += time; 
 
-            for (var i = 1; i <= 8; i++) {
+            for (var i = 1; i <= 20; i++) {
                 var keyPos = Math.round(Math.random() * (keys.length - 1));
                 result += keys.charAt(keyPos);
             }
