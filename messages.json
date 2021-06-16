@@ -35,26 +35,6 @@
         "message": "use:",
         "description": ""
     },
-    "optLength": {
-        "message": "length:",
-        "description": ""
-    },
-    "optLengthRandom": {
-        "message": "random",
-        "description": ""
-    },
-    "optUseLowercase": {
-        "message": "Lowercase letters",
-        "description": ""
-    },
-    "optUseUppercase": {
-        "message": "Uppercase letters",
-        "description": ""
-    },
-    "optUseNumber": {
-        "message": "Numbers",
-        "description": ""
-    },
     "historySelectLabel": {
         "message": "Select",
         "description": ""

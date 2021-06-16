@@ -1,42 +1,8 @@
 $('document')
     .ready(function() {
 
-        ////////////////////////////////////////////////////////////////////////////////////////
-        //
+       
         // Functions
-        //
-        ////////////////////////////////////////////////////////////////////////////////////////
-
-        // Update password length
-        function updateLength(val) {
-
-            var oldLength = Number($('#optionLength')
-                .val());
-            var newLength = oldLength;
-            var storedLength = localStorage['optionLength'];
-            var optLengthDisabled = $('#optionLengthWrapper')
-                .hasClass('disabled')
-
-            if (isNaN(oldLength))
-                oldLength = lengthDefault;
-
-            if (val != undefined)
-                newLength = oldLength + val;
-
-            if (newLength < lengthMin)
-                newLength = lengthMin;
-
-            if (newLength > lengthMax)
-                newLength = lengthMax;
-
-            if (newLength != oldLength && optLengthDisabled == false)
-                $('#optionLength')
-                .val(newLength);
-
-            if (newLength != storedLength)
-                storeSetting('optionLength', newLength);
-
-        }
 
         // Generate new password
         function generate() {
@@ -105,64 +71,7 @@ $('document')
 
         }
 
-        // Checks / sets buttons states
-        function checkButtonStates() {
 
-            // Random length checkbox
-            if ($('#optionLengthRandom')
-                .is(':checked') == true) {
-                $('#optionLengthWrapper')
-                    .addClass('disabled');
-                $('#optionLength')
-                    .attr('readonly', 'readonly');
-            } else {
-                $('#optionLengthWrapper')
-                    .removeClass('disabled');
-                $('#optionLength')
-                    .attr('readonly', '');
-            }
-
-            // Button Generate
-            if ($('#optionLowercase')
-                .is(':checked') == false && $('#optionUppercase')
-                .is(':checked') == false && $('#optionNumber')
-                .is(':checked') == false && ($('#optionCustom')
-                    .is(':checked') == false || $('#optionCustomBox')
-                    .attr('value') == ''))
-                $('#btnGenerate')
-                .addClass('disabled');
-            else
-                $('#btnGenerate')
-                .removeClass('disabled');
-
-            // Button CopyResult
-            if ($('#result')
-                .html() == '')
-                $('#btnCopyResult')
-                .addClass('disabled');
-            else
-                $('#btnCopyResult')
-                .removeClass('disabled');
-
-            // Button CopySelected
-            if ($('#historyListWrapper .historyItem input[type="checkbox"]')
-                .is(':checked'))
-                $('#btnCopySelected')
-                .removeClass('disabled');
-            else
-                $('#btnCopySelected')
-                .addClass('disabled');
-
-            // Button CopyAll
-            if (historyItemCount == 0)
-                $('#btnCopyAll')
-                .addClass('disabled');
-            else
-                $('#btnCopyAll')
-                .removeClass('disabled');
-
-
-        }
 
         // Copy given text to clipboard
         function copyToClipboard(text) {
@@ -186,19 +95,6 @@ $('document')
                 .html(chrome.i18n.getMessage("tabHistory"));
             $('#tabOptions')
                 .attr('title', chrome.i18n.getMessage("tabOptions"));
-
-            $('#optUse')
-                .html(chrome.i18n.getMessage("optUse"));
-            $('#optLength')
-                .html(chrome.i18n.getMessage("optLength"));
-            $('#optLengthRandom')
-                .html(chrome.i18n.getMessage("optLengthRandom"));
-            $('#optUseLowercase')
-                .html(chrome.i18n.getMessage("optUseLowercase"));
-            $('#optUseUppercase')
-                .html(chrome.i18n.getMessage("optUseUppercase"));
-            $('#optUseNumber')
-                .html(chrome.i18n.getMessage("optUseNumber"));
 
             $('#btnGenerate')
                 .html(chrome.i18n.getMessage("btnGenerate"));
@@ -225,29 +121,8 @@ $('document')
                 .html(chrome.i18n.getMessage("noItems"));
         }
 
-        // Initialize default settings
-        function initDefaultSettings() {
-            defaultSettings['optionLowercase'] = true;
-            defaultSettings['optionUppercase'] = true;
-            defaultSettings['optionNumber'] = true;
-            defaultSettings['optionLength'] = 12;
-            defaultSettings['optionLengthRandom'] = false;
-        }
-
         // Loads complete settings from localStorage or sets default value
         function loadSettings() {
-
-            $('#optionLowercase')
-                .attr('checked', (localStorage['optionLowercase'] == undefined ? defaultSettings['optionLowercase'] : (localStorage['optionLowercase'] == 'true' ? true : false)));
-            $('#optionUppercase')
-                .attr('checked', (localStorage['optionUppercase'] == undefined ? defaultSettings['optionUppercase'] : (localStorage['optionUppercase'] == 'true' ? true : false)));
-            $('#optionNumber')
-                .attr('checked', (localStorage['optionNumber'] == undefined ? defaultSettings['optionNumber'] : (localStorage['optionNumber'] == 'true' ? true : false)));
-            $('#optionLength')
-                .attr('value', (localStorage['optionLength'] == undefined ? defaultSettings['optionLength'] : localStorage['optionLength']));
-            $('#optionLengthRandom')
-                .attr('checked', (localStorage['optionLengthRandom'] == undefined ? defaultSettings['optionLengthRandom'] : (localStorage['optionLengthRandom'] == 'true' ? true : false)));
-            
 
             if (localStorage['passwordHistory'] != undefined) {
                 historyItems = JSON.parse(localStorage['passwordHistory']);
@@ -292,66 +167,6 @@ $('document')
                     .removeClass('selected');
                 $('#appContents #' + contentId)
                     .addClass('selected');
-            });
-
-        // Password length field keydown handler
-        $('#optionLength')
-            .keydown(function(e) {
-                if ((e.keyCode == 33 || e.keyCode == 34) || (e.keyCode >= 37 && e.keyCode <= 40) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode == 16 || (e.keyCode >= 48 && e.keyCode <= 57)) {
-
-                    switch (e.keyCode) {
-                        case 38:
-                            updateLength(1);
-                            return false;
-                            break;
-                        case 40:
-                            updateLength(-1);
-                            return false;
-                            break;
-                        case 33:
-                            updateLength(5);
-                            return false;
-                            break;
-                        case 34:
-                            updateLength(-5);
-                            return false;
-                            break;
-                    }
-                } else {
-                    return false;
-                }
-
-            });
-
-        // Password length field keyup handler
-        $('#optionLength')
-            .keyup(function() {
-                updateLength(0);
-            });
-
-        // Password length increase button
-        $('#optionLengthUp')
-            .click(function() {
-                updateLength(1);
-                $('#optionLength')
-                    .focus();
-                return false;
-            });
-
-        // Password length decrease button
-        $('#optionLengthDown')
-            .click(function() {
-                updateLength(-1);
-                $('#optionLength')
-                    .focus();
-                return false;
-            });
-
-
-        // Random length checkbox
-        $('#optionLengthRandom')
-            .click(function() {
-                checkButtonStates();
             });
 
         // Button Generate
@@ -451,18 +266,15 @@ $('document')
                 checkButtonStates();
             });
 
-        ////////////////////////////////////////////////////////////////////////////////////////
+        
         //
         // Extension settings initialization
         //
-        ////////////////////////////////////////////////////////////////////////////////////////
+        
 
         var defaultSettings = new Array;
         var historyItems = new Array;
         var historyItemCount = 0;
-        var lengthMin = 1;
-        var lengthMax = 128;
-        var lengthDisplay = 25;
 
         initDefaultSettings();
         loadSettings();
