@@ -68,9 +68,6 @@ $('document')
                 $('#historyListWrapper')
                     .prepend(itemString);
             }
-
-            checkButtonStates();
-
         }
 
 
@@ -137,7 +134,6 @@ $('document')
 
             }
 
-            checkButtonStates();
         }
 
         // Store settings to localStorage
@@ -252,7 +248,6 @@ $('document')
                     .hide();
                 $('#historyClearConfirmWrapper')
                     .hide();
-                checkButtonStates();
             });
 
         // Clear history confirm no
@@ -265,7 +260,6 @@ $('document')
         // History list items event delegation
         $('#historyListWrapper .historyItem input[type="checkbox"]')
             .live('click', function() {
-                checkButtonStates();
             });
 
         
