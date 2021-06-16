@@ -72,7 +72,7 @@ input {
 #appTabs .tab.selected {
     height: 18px;
     background-color: #fff;
-    background-image: url('../img/tabBackground.png');
+    background-image: url('img/tabBackground.png');
     background-position: top;
     background-repeat: repeat-x;
     color: #333;
@@ -82,7 +82,7 @@ input {
     display: block;
     height: 16px;
     width: 16px;
-    background-image: url('../img/iconOptions.png');
+    background-image: url('img/iconOptions.png');
     background-repeat: no-repeat;
     background-position: center center;
 
@@ -263,7 +263,7 @@ input {
 
 .button {
     background-color: #ddd;
-    background-image: url('../img/btnBackground.png');
+    background-image: url('img/btnBackground.png');
     background-repeat: no-repeat;
     background-position: left top;
     border-top: 1px solid #ccc;
@@ -288,7 +288,7 @@ input {
 }
 
 .button.disabled:active {
-    background-image: url('../img/btnBackground.png');
+    background-image: url('img/btnBackground.png');
 }
 
 #btnGenerate {
