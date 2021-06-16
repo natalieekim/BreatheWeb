@@ -151,6 +151,9 @@ input {
 .p {
     text-align: center; 
     line-height: 100px; 
+    margin-top: 20px; 
+    font-weight: bold;
+
 }
 /*buttons*/
 
