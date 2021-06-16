@@ -238,9 +238,25 @@ $('document')
                 .html(chrome.i18n.getMessage("historySelectAll"));
             $('#historySelectNone')
                 .html(chrome.i18n.getMessage("historySelectNone"));
+            $('#historySelectInvert')
+                .html(chrome.i18n.getMessage("historySelectInvert"));
 
             $('#historyClearList')
                 .html(chrome.i18n.getMessage("historyClearList"));
+            $('#historyClearConfirmMessage')
+                .html(chrome.i18n.getMessage("historyClearListConfirm"));
+            $('#btnClearYes')
+                .html(chrome.i18n.getMessage("historyClearListConfirmYes"));
+            $('#btnClearNo')
+                .html(chrome.i18n.getMessage("historyClearListConfirmNo"));
+
+            $('#optionsRememberPasswordsLabel')
+                .html(chrome.i18n.getMessage("optionsRememberHistory"));
+            $('#rememberPassWarning')
+                .html(chrome.i18n.getMessage("rememberPassWarning"));
+
+            $('.noItems')
+                .html(chrome.i18n.getMessage("noItems"));
         }
 
         // Initialize default settings
@@ -252,6 +268,7 @@ $('document')
             defaultSettings['optionCustomBox'] = '@$#';
             defaultSettings['optionLength'] = 12;
             defaultSettings['optionLengthRandom'] = false;
+            defaultSettings['optionsRememberPasswords'] = false;
         }
 
         // Loads complete settings from localStorage or sets default value
@@ -271,6 +288,8 @@ $('document')
                 .attr('value', (localStorage['optionLength'] == undefined ? defaultSettings['optionLength'] : localStorage['optionLength']));
             $('#optionLengthRandom')
                 .attr('checked', (localStorage['optionLengthRandom'] == undefined ? defaultSettings['optionLengthRandom'] : (localStorage['optionLengthRandom'] == 'true' ? true : false)));
+            $('#optionsRememberPasswords')
+                .attr('checked', (localStorage['optionsRememberPasswords'] == undefined ? defaultSettings['optionsRememberPasswords'] : (localStorage['optionsRememberPasswords'] == 'true' ? true : false)));
 
             if (localStorage['passwordHistory'] != undefined) {
                 historyItems = JSON.parse(localStorage['passwordHistory']);
@@ -383,6 +402,14 @@ $('document')
                 checkButtonStates();
             });
 
+        // Custom letters box keyup handler
+        $('#optionCustomBox')
+            .keyup(function() {
+                storeSetting($(this)
+                    .attr('id'), $(this)
+                    .attr('value'));
+                checkButtonStates();
+            });
 
         // Random length checkbox
         $('#optionLengthRandom')
@@ -432,6 +459,24 @@ $('document')
                 return false;
             });
 
+        // Button CopyAll
+        $('#btnCopyAll')
+            .click(function() {
+                if (!$(this)
+                    .hasClass('disabled')) {
+                    var copyContent = '';
+
+                    $('#historyListWrapper .historyItem span')
+                        .each(function() {
+                            copyContent += $(this)
+                                .attr('title') + "\n";
+                        });
+
+                    copyToClipboard(copyContent);
+                }
+                return false;
+            });
+
         // History List - Select all
         $('#historySelectAll')
             .click(function() {
@@ -472,6 +517,36 @@ $('document')
             .click(function() {
                 $('#historyClearConfirmWrapper')
                     .fadeIn('fast');
+            });
+
+        // Clear history confirm yes
+        $('#btnClearYes')
+            .click(function() {
+                historyItems = new Array;
+                historyItemCount = 0;
+                localStorage.removeItem('passwordHistory');
+                $('#historyListWrapper')
+                    .html('<div class="noItems"></div>');
+                $('.noItems')
+                    .html(chrome.i18n.getMessage("noItems"));
+                $('#historySelectionWrapper')
+                    .hide();
+                $('#historyClearConfirmWrapper')
+                    .hide();
+                checkButtonStates();
+            });
+
+        // Clear history confirm no
+        $('#btnClearNo')
+            .click(function() {
+                $('#historyClearConfirmWrapper')
+                    .fadeOut('fast');
+            });
+
+        // History list items event delegation
+        $('#historyListWrapper .historyItem input[type="checkbox"]')
+            .live('click', function() {
+                checkButtonStates();
             });
 
         ////////////////////////////////////////////////////////////////////////////////////////

@@ -3,14 +3,11 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Password Generator</title>
+    <title>Strong Password Generator</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <script type="text/javascript" src="../js/jquery-2.1.4.min.js">
+    <script type="text/javascript" src="../js/jquery.js">
     </script>
     <script type="text/javascript" src="../js/control.js">
-    </script>
-    </script>
-    <script src="js/popup.js">
     </script>
 </head>
 
@@ -23,7 +20,6 @@
             <a class="tab" id="tabOptions" href="#options"><span></span></a>
         </div>
         <div id="appContents">
-            <div class="content" id="websiteRecord"></div>
             <div class="content selected" id="contentGenerator">
                 <table id="tblOptions">
                     <tr>
@@ -76,6 +72,10 @@
                     <a href="#" id="btnCopySelected" class="button"></a>
                     <a href="#" id="btnCopyAll" class="button"></a>
                 </div>
+            </div>
+            <div class="content" id="contentOptions">
+                <input type="checkbox" name="optionsRememberPasswords" id="optionsRememberPasswords" /><label for="optionsRememberPasswords" id="optionsRememberPasswordsLabel"></label>
+                <div class="infoBox" id="rememberPassWarning"></div>
             </div>
             <div id="dummy">
                 <textarea name="copyField" id="copyField"></textarea>
