@@ -122,20 +122,10 @@ input {
 
 #tblOptions #optionLowercase,
 #tblOptions #optionUppercase,
-#tblOptions #optionNumber,
-#tblOptions #optionCustom {
+#tblOptions #optionNumber {
     margin: 2px 3px 2px 0px;
 }
 
-#optionCustomBox {
-    font-family: 'Consolas', Menlo, 'Courier New', Courier, Monospace;
-    width: 152px;
-    height: 12px;
-    border: 1px solid #b2b2b2;
-    padding: 2px 3px;
-    outline: none;
-    display: none;
-}
 
 #tblOptions #optionLengthWrapper {
     display: block;
@@ -428,14 +418,4 @@ input {
     position: absolute;
     right: 8px;
     width: 62px;
-}
-
-.infoBox {
-    margin: 10px 3px 0px 3px;
-    padding: 5px 5px 5px 26px;
-    border: 1px dashed #999;
-    background-color: #f8f8f8;
-    background-image: url('../img/iconInfo.png');
-    background-repeat: no-repeat;
-    background-position: 5px 6px;
 }

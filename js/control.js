@@ -62,10 +62,6 @@ $('document')
             if ($('#optionNumber')
                 .is(':checked') == true)
                 keys += '0123456789';
-            if ($('#optionCustom')
-                .is(':checked') == true)
-                keys += $('#optionCustomBox')
-                .attr('value');
 
             for (var i = 1; i <= length; i++) {
                 var keyPos = Math.round(Math.random() * (keys.length - 1));
@@ -93,7 +89,7 @@ $('document')
         function addToList(pass) {
 
             var itemCount = ++historyItemCount;
-            var itemString = '<label class="historyItem"><input type="checkbox" /><span title="' + pass.replace(/"/g, '&quot;') + '">' + (pass.length > lengthDisplay ? pass.substr(0, lengthDisplay - 3) + '...' : pass) + '</span></label>';
+            var itemString = '<label class="historyItem"><input type="checkbox" /><span title="' + pass.replace(g, '&quot;') + '">' + (pass.length > lengthDisplay ? pass.substr(0, lengthDisplay - 3) + '...' : pass) + '</span></label>';
 
             if (itemCount == 1) {
                 $('#historyListWrapper')
@@ -111,15 +107,6 @@ $('document')
 
         // Checks / sets buttons states
         function checkButtonStates() {
-            // Custom letters box
-            if ($('#optionCustom')
-                .is(':checked') == true) {
-                $('#optionCustomBox')
-                    .css('display', 'block');
-            } else {
-                $('#optionCustomBox')
-                    .css('display', 'none');
-            }
 
             // Random length checkbox
             if ($('#optionLengthRandom')
@@ -174,14 +161,6 @@ $('document')
                 $('#btnCopyAll')
                 .removeClass('disabled');
 
-            // Remember password history
-            if ($('#optionsRememberPasswords')
-                .is(':checked') == true) {
-                storeSetting('passwordHistory', JSON.stringify(historyItems));
-            } else {
-                localStorage.removeItem('passwordHistory');
-            }
-
 
         }
 
@@ -220,8 +199,6 @@ $('document')
                 .html(chrome.i18n.getMessage("optUseUppercase"));
             $('#optUseNumber')
                 .html(chrome.i18n.getMessage("optUseNumber"));
-            $('#optUseCustom')
-                .html(chrome.i18n.getMessage("optUseCustom"));
 
             $('#btnGenerate')
                 .html(chrome.i18n.getMessage("btnGenerate"));
@@ -234,12 +211,6 @@ $('document')
 
             $('#historySelectLabel')
                 .html(chrome.i18n.getMessage("historySelectLabel"));
-            $('#historySelectAll')
-                .html(chrome.i18n.getMessage("historySelectAll"));
-            $('#historySelectNone')
-                .html(chrome.i18n.getMessage("historySelectNone"));
-            $('#historySelectInvert')
-                .html(chrome.i18n.getMessage("historySelectInvert"));
 
             $('#historyClearList')
                 .html(chrome.i18n.getMessage("historyClearList"));
@@ -250,11 +221,6 @@ $('document')
             $('#btnClearNo')
                 .html(chrome.i18n.getMessage("historyClearListConfirmNo"));
 
-            $('#optionsRememberPasswordsLabel')
-                .html(chrome.i18n.getMessage("optionsRememberHistory"));
-            $('#rememberPassWarning')
-                .html(chrome.i18n.getMessage("rememberPassWarning"));
-
             $('.noItems')
                 .html(chrome.i18n.getMessage("noItems"));
         }
@@ -264,11 +230,8 @@ $('document')
             defaultSettings['optionLowercase'] = true;
             defaultSettings['optionUppercase'] = true;
             defaultSettings['optionNumber'] = true;
-            defaultSettings['optionCustom'] = false;
-            defaultSettings['optionCustomBox'] = '@$#';
             defaultSettings['optionLength'] = 12;
             defaultSettings['optionLengthRandom'] = false;
-            defaultSettings['optionsRememberPasswords'] = false;
         }
 
         // Loads complete settings from localStorage or sets default value
@@ -280,16 +243,11 @@ $('document')
                 .attr('checked', (localStorage['optionUppercase'] == undefined ? defaultSettings['optionUppercase'] : (localStorage['optionUppercase'] == 'true' ? true : false)));
             $('#optionNumber')
                 .attr('checked', (localStorage['optionNumber'] == undefined ? defaultSettings['optionNumber'] : (localStorage['optionNumber'] == 'true' ? true : false)));
-            $('#optionCustom')
-                .attr('checked', (localStorage['optionCustom'] == undefined ? defaultSettings['optionCustom'] : (localStorage['optionCustom'] == 'true' ? true : false)));
-            $('#optionCustomBox')
-                .attr('value', (localStorage['optionCustomBox'] == undefined ? defaultSettings['optionCustomBox'] : localStorage['optionCustomBox']));
             $('#optionLength')
                 .attr('value', (localStorage['optionLength'] == undefined ? defaultSettings['optionLength'] : localStorage['optionLength']));
             $('#optionLengthRandom')
                 .attr('checked', (localStorage['optionLengthRandom'] == undefined ? defaultSettings['optionLengthRandom'] : (localStorage['optionLengthRandom'] == 'true' ? true : false)));
-            $('#optionsRememberPasswords')
-                .attr('checked', (localStorage['optionsRememberPasswords'] == undefined ? defaultSettings['optionsRememberPasswords'] : (localStorage['optionsRememberPasswords'] == 'true' ? true : false)));
+            
 
             if (localStorage['passwordHistory'] != undefined) {
                 historyItems = JSON.parse(localStorage['passwordHistory']);
@@ -310,11 +268,7 @@ $('document')
             localStorage[name] = value;
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////
-        //
         // Event handlers
-        //
-        ////////////////////////////////////////////////////////////////////////////////////////
 
         // X to close window
         $('#appClose')
@@ -393,23 +347,6 @@ $('document')
                 return false;
             });
 
-        // Options checkboxes + Options tabs settings
-        $('#tblOptions input[type="checkbox"], #optionsRememberPasswords')
-            .click(function() {
-                storeSetting($(this)
-                    .attr('id'), $(this)
-                    .is(':checked'));
-                checkButtonStates();
-            });
-
-        // Custom letters box keyup handler
-        $('#optionCustomBox')
-            .keyup(function() {
-                storeSetting($(this)
-                    .attr('id'), $(this)
-                    .attr('value'));
-                checkButtonStates();
-            });
 
         // Random length checkbox
         $('#optionLengthRandom')
@@ -474,41 +411,6 @@ $('document')
 
                     copyToClipboard(copyContent);
                 }
-                return false;
-            });
-
-        // History List - Select all
-        $('#historySelectAll')
-            .click(function() {
-                $('#historyListWrapper .historyItem input[type="checkbox"]')
-                    .attr('checked', true);
-                checkButtonStates();
-                return false;
-            });
-
-        // History List - Select none
-        $('#historySelectNone')
-            .click(function() {
-                $('#historyListWrapper .historyItem input[type="checkbox"]')
-                    .attr('checked', false);
-                checkButtonStates();
-                return false;
-            });
-
-        // History List - Select invert
-        $('#historySelectInvert')
-            .click(function() {
-                $('#historyListWrapper .historyItem input[type="checkbox"]')
-                    .each(function() {
-                        if ($(this)
-                            .is(':checked') == true)
-                            $(this)
-                            .attr('checked', false);
-                        else
-                            $(this)
-                            .attr('checked', true);
-                    });
-                checkButtonStates();
                 return false;
             });
 

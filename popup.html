@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Strong Password Generator</title>
+    <title>Password Generator</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <script type="text/javascript" src="../js/jquery.js">
     </script>
@@ -17,7 +17,6 @@
         <div id="appTabs">
             <a class="tab selected" id="tabGenerator" href="#generator"></a>
             <a class="tab" id="tabHistory" href="#history"></a>
-            <a class="tab" id="tabOptions" href="#options"><span></span></a>
         </div>
         <div id="appContents">
             <div class="content selected" id="contentGenerator">
@@ -28,8 +27,6 @@
                             <input type="checkbox" name="optionLowercase" id="optionLowercase" /><label for="optionLowercase" id="optUseLowercase"></label><br />
                             <input type="checkbox" name="optionUppercase" id="optionUppercase" /><label for="optionUppercase" id="optUseUppercase"></label><br />
                             <input type="checkbox" name="optionNumber" id="optionNumber" /><label for="optionNumber" id="optUseNumber"></label><br />
-                            <input type="checkbox" name="optionCustom" id="optionCustom" /><label for="optionCustom" id="optUseCustom"></label><br />
-                            <input type="text" name="optionCustomBox" id="optionCustomBox" value="" />
                         </td>
                     </tr>
                     <tr>
@@ -56,7 +53,7 @@
                     <div id="historyListWrapper">
                         <div class="noItems"></div>
                     </div>
-                    <div id="historySelectionWrapper"><span id="historySelectLabel"></span>: <a href="#select-all" id="historySelectAll"></a>, <a href="#select-none" id="historySelectNone"></a>, <a href="#select-invert" id="historySelectInvert"></a><a href="#clear-list" id="historyClearList"></a></div>
+                    <div id="historySelectionWrapper"><span id="historySelectLabel"></span>: <a href="#clear-list" id="historyClearList"></a></div>
                     <div id="historyClearConfirmWrapper">
                         <div id="historyClearConfirmShade"></div>
                         <div id="historyClearConfirmBox">
@@ -70,12 +67,7 @@
                 </div>
                 <div id="historyCopyWrapper">
                     <a href="#" id="btnCopySelected" class="button"></a>
-                    <a href="#" id="btnCopyAll" class="button"></a>
                 </div>
-            </div>
-            <div class="content" id="contentOptions">
-                <input type="checkbox" name="optionsRememberPasswords" id="optionsRememberPasswords" /><label for="optionsRememberPasswords" id="optionsRememberPasswordsLabel"></label>
-                <div class="infoBox" id="rememberPassWarning"></div>
             </div>
             <div id="dummy">
                 <textarea name="copyField" id="copyField"></textarea>

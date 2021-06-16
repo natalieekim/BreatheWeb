@@ -1,6 +1,6 @@
 {
     "appDescription": {
-        "message": "Simple tool for generating strong and secure passwords",
+        "message": "Generates random passwords",
         "description": ""
     },
     "tabGenerator": {
@@ -55,28 +55,8 @@
         "message": "Numbers",
         "description": ""
     },
-    "optUseCustom": {
-        "message": "Custom",
-        "description": ""
-    },
-    "noItems": {
-        "message": "No items found...",
-        "description": ""
-    },
     "historySelectLabel": {
         "message": "Select",
-        "description": ""
-    },
-    "historySelectAll": {
-        "message": "all",
-        "description": ""
-    },
-    "historySelectNone": {
-        "message": "none",
-        "description": ""
-    },
-    "historySelectInvert": {
-        "message": "invert",
         "description": ""
     },
     "historyClearList": {
@@ -93,14 +73,6 @@
     },
     "historyClearListConfirmNo": {
         "message": "No",
-        "description": ""
-    },
-    "optionsRememberHistory": {
-        "message": "Remember history of passwords",
-        "description": ""
-    },
-    "rememberPassWarning": {
-        "message": "If you use remembering of password history, don't forget to clear list manualy to prevent stealing of your passwords.",
         "description": ""
     },
     "appClose": {
