@@ -42,10 +42,6 @@ $('document')
                 .attr('title', result);
             $('#resultContainer')
                 .html(result);
-
-            historyItems[historyItemCount] = result;
-
-            addToList(result);
         }
 
         // Copy given text to clipboard
@@ -71,9 +67,6 @@ $('document')
                 .html(chrome.i18n.getMessage("btnGenerate"));
             $('#btnCopyResult')
                 .attr('title', chrome.i18n.getMessage("btnCopyResult"));
-
-            $('#historySelectLabel')
-                .html(chrome.i18n.getMessage("historySelectLabel"));
 
             $('.noItems')
                 .html(chrome.i18n.getMessage("noItems"));
