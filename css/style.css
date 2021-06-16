@@ -148,6 +148,10 @@ input {
     -webkit-user-select: text;
 }
 
+.p {
+    position: absolute; 
+    top: auto; 
+}
 /*buttons*/
 
 .button {
