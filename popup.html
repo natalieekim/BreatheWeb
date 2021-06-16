@@ -11,10 +11,7 @@
         var start,
                 end,
                 delta,
-                buttonText = "Generate Password!", 
-                button;
-
-                button = document.getElementById("btnGenerate").innerHTML = buttonText;
+                button = document.getElementById("btnGenerate");
  
 
                 button.addEventListener("mousedown", function() {
@@ -36,6 +33,7 @@
         </div>
         <div id="appContents">
             <div class="content selected" id="contentGeneratGenerateor">
+                <p>Generate a password!</p>
                 <a href="#" id="btnGenerate" class="button"></a>
                 <div id="resultWrapper">
                     <div id="result"></div>
