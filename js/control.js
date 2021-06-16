@@ -26,7 +26,7 @@ $('document')
             var keys = '';
             var result = '';
 
-            keys += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+            keys += "ABC"; 
 
             var time = milliseconds(); 
             keys += time; 
