@@ -1,0 +1,110 @@
+{
+    "appDescription": {
+        "message": "Simple tool for generating strong and secure passwords",
+        "description": ""
+    },
+    "tabGenerator": {
+        "message": "Generator",
+        "description": ""
+    },
+    "tabHistory": {
+        "message": "History",
+        "description": ""
+    },
+    "tabOptions": {
+        "message": "Options",
+        "description": ""
+    },
+    "btnGenerate": {
+        "message": "Generate",
+        "description": ""
+    },
+    "btnCopyResult": {
+        "message": "Copy to clipboard",
+        "description": ""
+    },
+    "btnCopySelected": {
+        "message": "Copy Selected",
+        "description": ""
+    },
+    "btnCopyAll": {
+        "message": "Copy All",
+        "description": ""
+    },
+    "optUse": {
+        "message": "use:",
+        "description": ""
+    },
+    "optLength": {
+        "message": "length:",
+        "description": ""
+    },
+    "optLengthRandom": {
+        "message": "random",
+        "description": ""
+    },
+    "optUseLowercase": {
+        "message": "Lowercase letters",
+        "description": ""
+    },
+    "optUseUppercase": {
+        "message": "Uppercase letters",
+        "description": ""
+    },
+    "optUseNumber": {
+        "message": "Numbers",
+        "description": ""
+    },
+    "optUseCustom": {
+        "message": "Custom",
+        "description": ""
+    },
+    "noItems": {
+        "message": "No items found...",
+        "description": ""
+    },
+    "historySelectLabel": {
+        "message": "Select",
+        "description": ""
+    },
+    "historySelectAll": {
+        "message": "all",
+        "description": ""
+    },
+    "historySelectNone": {
+        "message": "none",
+        "description": ""
+    },
+    "historySelectInvert": {
+        "message": "invert",
+        "description": ""
+    },
+    "historyClearList": {
+        "message": "Clear list",
+        "description": ""
+    },
+    "historyClearListConfirm": {
+        "message": "Are you sure?",
+        "description": ""
+    },
+    "historyClearListConfirmYes": {
+        "message": "Yes",
+        "description": ""
+    },
+    "historyClearListConfirmNo": {
+        "message": "No",
+        "description": ""
+    },
+    "optionsRememberHistory": {
+        "message": "Remember history of passwords",
+        "description": ""
+    },
+    "rememberPassWarning": {
+        "message": "If you use remembering of password history, don't forget to clear list manualy to prevent stealing of your passwords.",
+        "description": ""
+    },
+    "appClose": {
+        "message": "Close",
+        "description": ""
+    }
+}

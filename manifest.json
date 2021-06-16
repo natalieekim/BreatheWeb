@@ -1,41 +1,37 @@
 {
     "update_url": "https://clients2.google.com/service/update2/crx",
     "manifest_version": 2,
-    "name": "Password Generator", 
-    "decription": "Your passwords will be randomly generated thorugh this extension!",
-    "version": "versionString", 
-    "offline_enabled": true,
-    "icons": {
-        "16": "icon/icon-16.png",
-        "32": "icon/icon-32.png",
-        "48": "icon/icon-48.png",
-        "128": "icon/icon-128.png"
-    },
+    "name": "Password Generator",
+    "description": "To generate random passwords for a website.",
+    "version": "1.0",
     "browser_action": {
-        "default_icon": {
-            "19": "icon/icon-19.png",
-            "38": "icon/icon-38.png"
-        },
-        "default_popup": "popup.html",
-        "default_title": "Passowrd Generator"
+        "default_icon": "img/toolbar.png",
+        "default_popup": "popup.html"
     },
-    "background": {
-        "scripts": [
-            "js/config.js",
-            "js/fn.js",
-            "js/storage-local.js",
-            "background.js"
-        ]
+    "icons": {
+        "16": "img/icon16.png",
+        "32": "img/icon32.png",
+        "48": "img/icon48.png",
+        "64": "img/icon64/png",
+        "96": "img/icons/icon96.png",
+        "128": "img/hourglass_128.png"
     },
-    "permissions": [
-        "tabs",
-        "idle",
-        "storage",
-        "unlimitedStorage"
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "js/website-statistics.js"
+            ]
+        }
     ],
-    "optional_permissions": [
-        "<all_urls>"
+    "permissions": [
+        "activeTab",
+        "https://ajax.googleapis.com/",
+        "storage"
+    ],
+    "web_accessible_resources": [
+        "css/regular.css"
     ]
-    
-    
 }
