@@ -1,8 +1,23 @@
 $('document')
     .ready(function() {
+        // Generate milliseconds when user presses on button and then releases
+        function milliseconds() {
+            var start,
+            end,
+            delta,
+            button = document.getElementById("btnGenerate"); 
 
-       
-        // Functions
+            button.addEventListener("mousedown", function() {
+                start = new Date(); 
+            }); 
+
+            button.addEventListener("mouseup", function() {
+                end = new Date();
+                delta = end - start;
+            });
+            return delta; 
+        }
+
 
         // Generate new password
         function generate() {
@@ -11,25 +26,12 @@ $('document')
             var keys = '';
             var result = '';
 
-            if ($('#optionLengthRandom')
-                .is(':checked') == true) {
-                length = lengthMin + Math.round(Math.random() * (lengthMax - lengthMin));
-            } else {
-                length = Number($('#optionLength')
-                    .val());
-            }
+            keys += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
-            if ($('#optionLowercase')
-                .is(':checked') == true)
-                keys += 'abcdefghijklmnopqrstuvwxyz';
-            if ($('#optionUppercase')
-                .is(':checked') == true)
-                keys += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            if ($('#optionNumber')
-                .is(':checked') == true)
-                keys += '0123456789';
+            var time = milliseconds(); 
+            keys += time; 
 
-            for (var i = 1; i <= length; i++) {
+            for (var i = 1; i <= 8; i++) {
                 var keyPos = Math.round(Math.random() * (keys.length - 1));
                 result += keys.charAt(keyPos);
             }
