@@ -3,7 +3,7 @@ body {
     padding: 5px;
     background-color: #fff;
     cursor: default;
-    -webkit-user-select: none;
+    -webkit-user-select: none; /* which elements can be selected by the user */
 }
 
 body,
@@ -19,7 +19,7 @@ input {
     vertical-align: middle;
 }
 
-/********* app layout *********/
+/*app*/
 
 #appClose {
     display: block;
@@ -28,7 +28,7 @@ input {
     top: 7px;
     height: 10px;
     width: 10px;
-    background-image: url('../img/btnClose.png');
+    background-image: url('img/btnClose.png');
     background-repeat: no-repeat;
     background-position: top;
     cursor: default;
@@ -103,7 +103,7 @@ input {
     display: block;
 }
 
-/********* content:generator *********/
+/*password generated*/
 
 
 #resultWrapper {
@@ -148,8 +148,7 @@ input {
     -webkit-user-select: text;
 }
 
-
-/********* buttons *********/
+/*buttons*/
 
 .button {
     background-color: #ddd;

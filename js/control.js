@@ -19,7 +19,7 @@ $('document')
         }
 
 
-        // Generate new password
+        // Creating a new password
         function generate() {
 
             var length;
@@ -31,7 +31,7 @@ $('document')
             var time = milliseconds(); 
             keys += time; 
 
-            for (var i = 1; i <= 20; i++) {
+            for (var i = 1; i <= 8; i++) {
                 var keyPos = Math.round(Math.random() * (keys.length - 1));
                 result += keys.charAt(keyPos);
             }
@@ -57,29 +57,18 @@ $('document')
             
         };
 
-        // X to close window
+        // Closes the window 
         $('#appClose')
             .click(function() {
                 window.close();
             });
 
-        // Button Generate
+        // If clicked... 
         $('#btnGenerate')
             .click(function() {
                 if (!$(this)
                     .hasClass('disabled'))
                     generate();
-                return false;
-            });
-
-        // Button CopyResult
-        $('#btnCopyResult')
-            .click(function() {
-                if (!$(this)
-                    .hasClass('disabled')) {
-                    copyToClipboard($('#resultContainer')
-                        .html());
-                }
                 return false;
             });
         
