@@ -19,14 +19,14 @@ $('document')
         }
 
 
-        // Generate new password
+        // Creating a new password
         function generate() {
 
             var length;
             var keys = '';
             var result = '';
 
-            // keys += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+            keys += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
             var time = milliseconds(); 
             keys += time; 
@@ -57,29 +57,18 @@ $('document')
             
         };
 
-        // X to close window
+        // Closes the window 
         $('#appClose')
             .click(function() {
                 window.close();
             });
 
-        // Button Generate
+        // If clicked... 
         $('#btnGenerate')
             .click(function() {
                 if (!$(this)
                     .hasClass('disabled'))
                     generate();
-                return false;
-            });
-
-        // Button CopyResult
-        $('#btnCopyResult')
-            .click(function() {
-                if (!$(this)
-                    .hasClass('disabled')) {
-                    copyToClipboard($('#resultContainer')
-                        .html());
-                }
                 return false;
             });
         
