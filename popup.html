@@ -11,7 +11,11 @@
         var start,
                 end,
                 delta,
-                button = document.getElementById("btnGenerate"); 
+                buttonText = "Generate Password!", 
+                button;
+
+                button = document.getElementById("btnGenerate").innerHTML = buttonText;
+ 
 
                 button.addEventListener("mousedown", function() {
                     start = new Date(); 
