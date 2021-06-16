@@ -28,7 +28,6 @@ input {
     top: 7px;
     height: 10px;
     width: 10px;
-    background-image: url('img/btnBackground.png');
     background-repeat: no-repeat;
     background-position: top;
     cursor: default;
@@ -72,7 +71,6 @@ input {
 #appTabs .tab.selected {
     height: 18px;
     background-color: #fff;
-    background-image: url('img/tabBackground.png');
     background-position: top;
     background-repeat: repeat-x;
     color: #333;
@@ -82,7 +80,6 @@ input {
     display: block;
     height: 16px;
     width: 16px;
-    background-image: url('img/iconOptions.png');
     background-repeat: no-repeat;
     background-position: center center;
 
@@ -180,10 +177,6 @@ input {
 
 .button.disabled {
     color: #999;
-}
-
-.button.disabled:active {
-    background-image: url('img/btnBackground.png');
 }
 
 #btnGenerate {
