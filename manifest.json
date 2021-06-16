@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Password Generator",
     "version": "1.6",
-    "description": "Generates strong passwords for users",
+    "description": "Generates passwords for users",
     "browser_action": {
         "default_icon": "img/toolbar.png",
         "default_popup": "popup.html"

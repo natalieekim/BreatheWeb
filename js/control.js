@@ -48,25 +48,6 @@ $('document')
             addToList(result);
         }
 
-        // Adds generated password to history tab
-        function addToList(pass) {
-
-            var itemCount = ++historyItemCount;
-            var itemString = '<label class="historyItem"><input type="checkbox" /><span title="' + '">' + (pass.length > lengthDisplay ? pass.substr(0, lengthDisplay - 3) + '...' : pass) + '</span></label>';
-
-            if (itemCount == 1) {
-                $('#historyListWrapper')
-                    .html(itemString);
-                $('#historySelectionWrapper')
-                    .show();
-            } else {
-                $('#historyListWrapper')
-                    .prepend(itemString);
-            }
-        }
-
-
-
         // Copy given text to clipboard
         function copyToClipboard(text) {
             $('#copyField')
@@ -85,50 +66,17 @@ $('document')
 
             $('#tabGenerator')
                 .html(chrome.i18n.getMessage("tabGenerator"));
-            $('#tabHistory')
-                .html(chrome.i18n.getMessage("tabHistory"));
-            $('#tabOptions')
-                .attr('title', chrome.i18n.getMessage("tabOptions"));
 
             $('#btnGenerate')
                 .html(chrome.i18n.getMessage("btnGenerate"));
             $('#btnCopyResult')
                 .attr('title', chrome.i18n.getMessage("btnCopyResult"));
-            $('#btnCopySelected')
-                .html(chrome.i18n.getMessage("btnCopySelected"));
-            $('#btnCopyAll')
-                .html(chrome.i18n.getMessage("btnCopyAll"));
 
             $('#historySelectLabel')
                 .html(chrome.i18n.getMessage("historySelectLabel"));
 
-            $('#historyClearList')
-                .html(chrome.i18n.getMessage("historyClearList"));
-            $('#historyClearConfirmMessage')
-                .html(chrome.i18n.getMessage("historyClearListConfirm"));
-            $('#btnClearYes')
-                .html(chrome.i18n.getMessage("historyClearListConfirmYes"));
-            $('#btnClearNo')
-                .html(chrome.i18n.getMessage("historyClearListConfirmNo"));
-
             $('.noItems')
                 .html(chrome.i18n.getMessage("noItems"));
-        }
-
-        // Loads complete settings from localStorage or sets default value
-        function loadSettings() {
-
-            if (localStorage['passwordHistory'] != undefined) {
-                historyItems = JSON.parse(localStorage['passwordHistory']);
-
-                if (historyItems.length > 0) {
-                    for (i = 0; i < historyItems.length; i++) {
-                        addToList(historyItems[i]);
-                    }
-                }
-
-            }
-
         }
 
         // X to close window
@@ -174,93 +122,8 @@ $('document')
                 }
                 return false;
             });
-
-        // Button CopySelected
-        $('#btnCopySelected')
-            .click(function() {
-                if (!$(this)
-                    .hasClass('disabled')) {
-                    var copyContent = '';
-
-                    $('#historyListWrapper .historyItem')
-                        .each(function() {
-                            if ($(this)
-                                .find('input[type="checkbox"]')
-                                .is(':checked') == true)
-                                copyContent += $(this)
-                                .find('span')
-                                .attr('title') + "\n";
-                        });
-
-                    copyToClipboard(copyContent);
-                }
-                return false;
-            });
-
-        // Button CopyAll
-        $('#btnCopyAll')
-            .click(function() {
-                if (!$(this)
-                    .hasClass('disabled')) {
-                    var copyContent = '';
-
-                    $('#historyListWrapper .historyItem span')
-                        .each(function() {
-                            copyContent += $(this)
-                                .attr('title') + "\n";
-                        });
-
-                    copyToClipboard(copyContent);
-                }
-                return false;
-            });
-
-        // Clear history confirm
-        $('#historyClearList')
-            .click(function() {
-                $('#historyClearConfirmWrapper')
-                    .fadeIn('fast');
-            });
-
-        // Clear history confirm yes
-        $('#btnClearYes')
-            .click(function() {
-                historyItems = new Array;
-                historyItemCount = 0;
-                localStorage.removeItem('passwordHistory');
-                $('#historyListWrapper')
-                    .html('<div class="noItems"></div>');
-                $('.noItems')
-                    .html(chrome.i18n.getMessage("noItems"));
-                $('#historySelectionWrapper')
-                    .hide();
-                $('#historyClearConfirmWrapper')
-                    .hide();
-            });
-
-        // Clear history confirm no
-        $('#btnClearNo')
-            .click(function() {
-                $('#historyClearConfirmWrapper')
-                    .fadeOut('fast');
-            });
-
-        // History list items event delegation
-        $('#historyListWrapper .historyItem input[type="checkbox"]')
-            .live('click', function() {
-            });
-
         
-        //
-        // Extension settings initialization
-        //
-        
-
-        var defaultSettings = new Array;
         var lengthDisplay = 25;
-        var historyItems = new Array;
-        var historyItemCount = 0;
 
-        loadSettings();
         loadLocalizations();
     });

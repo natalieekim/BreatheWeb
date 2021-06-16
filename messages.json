@@ -7,52 +7,12 @@
         "message": "Generator",
         "description": ""
     },
-    "tabHistory": {
-        "message": "History",
-        "description": ""
-    },
-    "tabOptions": {
-        "message": "Options",
-        "description": ""
-    },
     "btnGenerate": {
         "message": "Generate",
         "description": ""
     },
     "btnCopyResult": {
         "message": "Copy to clipboard",
-        "description": ""
-    },
-    "btnCopySelected": {
-        "message": "Copy Selected",
-        "description": ""
-    },
-    "btnCopyAll": {
-        "message": "Copy All",
-        "description": ""
-    },
-    "optUse": {
-        "message": "use:",
-        "description": ""
-    },
-    "historySelectLabel": {
-        "message": "Select",
-        "description": ""
-    },
-    "historyClearList": {
-        "message": "Clear list",
-        "description": ""
-    },
-    "historyClearListConfirm": {
-        "message": "Are you sure?",
-        "description": ""
-    },
-    "historyClearListConfirmYes": {
-        "message": "Yes",
-        "description": ""
-    },
-    "historyClearListConfirmNo": {
-        "message": "No",
         "description": ""
     },
     "appClose": {
