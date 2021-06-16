@@ -257,10 +257,17 @@ $('document')
         
 
         var defaultSettings = new Array;
+<<<<<<< HEAD
         var lengthDisplay = 25;
         var historyItems = new Array;
         var historyItemCount = 0;
 
         loadSettings();
         loadLocalizations();
+=======
+	    var lengthDisplay = 25;
+	
+	    loadSettings();
+	    loadLocalizations();
+>>>>>>> 55422d61ea5cae8e06f9defdd94130a3baa8fd64
     });
