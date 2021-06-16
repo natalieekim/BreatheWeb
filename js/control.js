@@ -45,11 +45,6 @@ $('document')
 
             historyItems[historyItemCount] = result;
 
-            if ($('#optionsRememberPasswords')
-                .is(':checked') == true) {
-                storeSetting('passwordHistory', JSON.stringify(historyItems));
-            }
-
             addToList(result);
         }
 
@@ -135,13 +130,6 @@ $('document')
             }
 
         }
-
-        // Store settings to localStorage
-        function storeSetting(name, value) {
-            localStorage[name] = value;
-        }
-
-        // Event handlers
 
         // X to close window
         $('#appClose')
@@ -269,6 +257,7 @@ $('document')
         
 
         var defaultSettings = new Array;
+        var lengthDisplay = 25;
         var historyItems = new Array;
         var historyItemCount = 0;
 
