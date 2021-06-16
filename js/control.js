@@ -278,7 +278,6 @@ $('document')
         var historyItems = new Array;
         var historyItemCount = 0;
 
-        initDefaultSettings();
         loadSettings();
         loadLocalizations();
     });
