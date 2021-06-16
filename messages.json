@@ -11,10 +11,6 @@
         "message": "Generate",
         "description": ""
     },
-    "btnCopyResult": {
-        "message": "Copy to clipboard",
-        "description": ""
-    },
     "appClose": {
         "message": "Close",
         "description": ""

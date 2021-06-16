@@ -26,7 +26,7 @@ $('document')
             var keys = '';
             var result = '';
 
-            keys += "ABC"; 
+            keys += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
             var time = milliseconds(); 
             keys += time; 
@@ -44,17 +44,6 @@ $('document')
                 .html(result);
         }
 
-        // Copy given text to clipboard
-        function copyToClipboard(text) {
-            $('#copyField')
-                .val(text);
-            $('#copyField')
-                .select();
-            document.execCommand('Copy');
-            $('#copyField')
-                .blur();
-        }
-
         // Loads localization strings
         function loadLocalizations() {
             $('#appClose')
@@ -65,35 +54,13 @@ $('document')
 
             $('#btnGenerate')
                 .html(chrome.i18n.getMessage("btnGenerate"));
-            $('#btnCopyResult')
-                .attr('title', chrome.i18n.getMessage("btnCopyResult"));
-
-            $('.noItems')
-                .html(chrome.i18n.getMessage("noItems"));
-        }
+            
+        };
 
         // X to close window
         $('#appClose')
             .click(function() {
                 window.close();
-            });
-
-        // Tab switching
-        $('#appTabs .tab')
-            .click(function() {
-                $('#appTabs .tab.selected')
-                    .removeClass('selected');
-                $(this)
-                    .addClass('selected');
-
-                var contentId = 'content' + $(this)
-                    .attr('id')
-                    .substr(3);
-
-                $('#appContents .content.selected')
-                    .removeClass('selected');
-                $('#appContents #' + contentId)
-                    .addClass('selected');
             });
 
         // Button Generate
