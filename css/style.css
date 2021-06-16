@@ -155,8 +155,8 @@ input {
 /*buttons*/
 
 .button {
-    background-color: #ddd;
-    background-image: url('img/btnBackground.png');
+    background-color: rgb(38, 99, 168); 
+    color: white;
     background-repeat: no-repeat;
     background-position: left top;
     border-top: 1px solid #ccc;
