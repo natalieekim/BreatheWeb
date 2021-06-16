@@ -10,7 +10,7 @@
         "default_popup": "popup.html"
     },
     "icons": {
-        "16": "ima/icon16.png",
+        "16": "img/icon16.png",
         "32": "img/icon32.png",
         "48": "img/icon48.png",
         "64": "img/icon64.png",
