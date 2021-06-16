@@ -149,8 +149,8 @@ input {
 }
 
 .p {
-    position: absolute; 
-    top: auto; 
+    text-align: center; 
+    line-height: 100px; 
 }
 /*buttons*/
 
