@@ -275,9 +275,8 @@ $('document')
         
 
         var defaultSettings = new Array;
-        var historyItems = new Array;
-        var historyItemCount = 0;
-
-        loadSettings();
-        loadLocalizations();
+	    var lengthDisplay = 25;
+	
+	    loadSettings();
+	    loadLocalizations();
     });
